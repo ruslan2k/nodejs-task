@@ -1,0 +1,13 @@
+APP := short_url
+
+attach: daemon
+	docker  exec  -i -t  $(APP)  bash
+
+daemon:
+	-docker  run  -t -d --name $(APP) -p 3000:3000 \
+		 -v `pwd`:/opt/$(APP) node:4 \
+		 bash -c "cd /opt/$(APP) && node server.js"
+
+clean:
+	docker stop $(APP)
+	docker rm   $(APP)
