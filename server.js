@@ -1,11 +1,17 @@
 var express = require('express')
-  , http = require('http')
-  , app = express();
+var path = require('path');
+var favicon = require('serve-favicon');
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+var routes = require('./routes/index');
 
-app.listen(3000, function () {
-  console.log('App on port 3000!');
-});
+var app = express();
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+
+// app.listen(3000, function () {
+//   console.log('App on port 3000!');
+// });
+
+module.exports = app;
