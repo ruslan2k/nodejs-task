@@ -3,3 +3,8 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  form(method="post" action="/shorturls")
+    span.label Url:
+    =" "
+    input(type="text", name="url")
+    input(type="submit", value="add")
