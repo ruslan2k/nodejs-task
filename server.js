@@ -3,6 +3,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 
 var routes = require('./routes/index');
+var shorturls = require('./routes/shorturls');
 
 var app = express();
 
@@ -10,8 +11,11 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// app.listen(3000, function () {
-//   console.log('App on port 3000!');
-// });
+app.use('/', routes);
+app.use('/shorturls', shorturls);
 
-module.exports = app;
+app.listen(3000, function () {
+  console.log('App on port 3000!');
+});
+
+//module.exports = app;

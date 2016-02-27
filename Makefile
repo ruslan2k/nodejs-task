@@ -6,7 +6,7 @@ attach: daemon
 daemon:
 	-docker  run  -t -d --name $(APP) -p 3000:3000 \
 		 -v `pwd`:/opt/$(APP) node:4 \
-		 bash -c "cd /opt/$(APP) && node server.js"
+		 bash
 
 clean:
 	docker stop $(APP)
