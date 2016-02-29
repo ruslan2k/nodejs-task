@@ -10,12 +10,14 @@ router.get('/', function (req, res) {
   });
 });
 
-router.post('/', function (req, res) {
-  //res.send(req);
+router.post('/', function (req, res, next) {
   new_uid = funcs.genUid();
-  console.log(req.body.long_url);
   console.log(new_uid);
-  res.send(getRandomString());
+  long_url = req.body.long_url;
+  db.run("INSERT INTO urls VALUES (?, ?, ?, ?)",
+    [new_uid.int_uid, 0, new_uid.str_uid, long_url]);
+  console.log(req.body.long_url);
+  res.json({ok: "ok"});
 });
 
 module.exports = router;
