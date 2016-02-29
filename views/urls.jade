@@ -3,7 +3,9 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+
   ul
-    each val, index in [{a:"b"}, {c:"d"}, {e:"f"}]
-      li(id="item-#{index}")
-  p Urls #{urls}
+    each val, index in urls
+      li #{Object.keys(val)[0]}
+      li #{Object.keys(val)}
+      li #{val.a}

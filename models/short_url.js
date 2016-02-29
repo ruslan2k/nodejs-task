@@ -1,6 +1,4 @@
-var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database("db.sq3");
-
+var db = require('../db');
 
 module.exports = {
   get: function (id) {
@@ -13,5 +11,4 @@ module.exports = {
     //    
   }
 
-
-}
+};

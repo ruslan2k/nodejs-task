@@ -43,7 +43,7 @@ module.exports = {
   //   return str_uid;
   // },
 
-  strUidtoIntUid: function (str_uid)
+  strUidtoInt: function (str_uid)
   {
     var int_uid = 0;
     var l = str_uid.length;
