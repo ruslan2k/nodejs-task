@@ -3,6 +3,11 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+
+  - if (typeof(short_url) !== 'undefined') {
+    input(type="text" value="http://home.jkl.su/" + short_url)
+  - }
+
   form(method="post" action="/shorturls")
     span.label Url:
     =" "

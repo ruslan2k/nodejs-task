@@ -17,7 +17,8 @@ router.post('/', function (req, res, next) {
   db.run("INSERT INTO urls VALUES (?, ?, ?, ?)",
     [new_uid.int_uid, 0, new_uid.str_uid, long_url]);
   console.log(req.body.long_url);
-  res.json({ok: "ok"});
+  //res.json({ok: "ok"});
+  res.redirect('/?short_url=' + new_uid.str_uid);
 });
 
 module.exports = router;
