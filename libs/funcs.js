@@ -27,21 +27,8 @@ module.exports = {
       str_uid += c;
       int_uid = int_uid * 100 + c.charCodeAt() - 64;
     }
-  
     return {"int_uid": int_uid, "str_uid": str_uid};
   },
-
-  // intUidtoStrUid: function (int_uid)
-  // {
-  //   var str_uid = "";
-  //   for (; int_uid > 1;) {
-  //     var i = int_uid % 100;
-  //     var int_uid = int_uid / 100;
-  //     str_uid = possible.charAt(i) + str_uid; 
-  //   }
-
-  //   return str_uid;
-  // },
 
   strUidtoInt: function (str_uid)
   {
@@ -51,7 +38,6 @@ module.exports = {
     for (var i = 0; i < l; i++) {
       int_uid = int_uid * 100 + str_uid.charAt(i).charCodeAt() - 64;
     }
-
     return int_uid;
   }
 };
