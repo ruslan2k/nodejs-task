@@ -10,6 +10,7 @@ router.get('/', function (req, res) {
   });
 });
 
+/* Create short url */
 router.post('/', function (req, res, next) {
   new_uid = funcs.genUid();
   console.log(new_uid);
