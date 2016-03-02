@@ -5,7 +5,7 @@ block content
   p Welcome to #{title}
 
   - if (typeof(short_url) !== 'undefined') {
-    h2= "http://home.jkl.su/" + short_url
+    h2= proto + "://" + host + "/" + short_url
   - }
 
   form(method="post" action="/shorturls")

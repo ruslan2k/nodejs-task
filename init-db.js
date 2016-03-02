@@ -13,7 +13,7 @@ var sqlite3 = require("sqlite3").verbose()
 db.serialize(function () {
   if (!exists) {
     db.run(
-      "CREATE TABLE urls ("
+      "CREATE TABLE IF NOT EXISTS urls ("
         + "id INTEGER PRIMARY KEY,"
         + "counter INT,"
         + "path CHAR,"
@@ -22,14 +22,14 @@ db.serialize(function () {
     );
   }
 
-  var stmt = db.prepare("INSERT INTO urls VALUES (?, ?, ?, ?)");
-  var rnd;
-  for (var i = 0; i < 10; i++) {
-    rnd = 500 - i;
-    stmt.run([i, 0, rnd, "http://google.com"]);
-  } 
+  // var stmt = db.prepare("INSERT INTO urls VALUES (?, ?, ?, ?)");
+  // var rnd;
+  // for (var i = 0; i < 10; i++) {
+  //   rnd = 500 - i;
+  //   stmt.run([i, 0, rnd, "http://google.com"]);
+  // } 
 
-  stmt.finalize();
+  // stmt.finalize();
 
 });
 
