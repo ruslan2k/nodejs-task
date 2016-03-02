@@ -6,8 +6,9 @@ var url_regex = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
 
 /* Get short urls list */
 router.get('/', function (req, res) {
-  db.all("SELECT * FROM urls", function (err, rows) {
-    res.json({"rows": rows});
+  db.all("SELECT * FROM urls ORDER BY counter DESC", function (err, rows) {
+    //res.json({"rows": rows});
+    res.render('shorturls', {"rows": rows});
   });
 });
 
