@@ -3,15 +3,13 @@ var router = express.Router();
 var funcs = require('../libs/funcs');
 var db = require('../db');
 
-/* Get short url */
+/* Redirect short url */
 router.get(/^\/([a-zA-Z]{6})$/, function (req, res, next) {
   var str_uid = req.params[0];
   var int_uid = funcs.strUidtoInt(str_uid);
   var long_url;
 
   db.get("SELECT * FROM urls WHERE id = ?", int_uid, function (err, row) {
-    console.log("err:" + err);
-    console.log("row:" + row);
     if (err) {
       throw err;
     } else if (row == undefined) {
@@ -26,12 +24,21 @@ router.get(/^\/([a-zA-Z]{6})$/, function (req, res, next) {
 
 /* GET home page. */
 router.get('/', function (req, res) {
-  res.render('index',
-    { title: 'Shorter URL',
-      short_url: req.query.short_url,
-      proto: req.protocol,
-      host: req.get('host')
-    });
+  var int_uid = req.query.int_uid;
+  db.get("SELECT * FROM urls WHERE id = ?", int_uid, function (err, row) {
+    if (err) {
+      throw err;
+    } else if (row !== undefined) {
+      res.render('index', {
+        short_url: row.path,
+        proto: req.protocol,
+        host: req.get('host'),
+        long_url: row.long_url,
+      });
+    } else {
+      res.render('index');
+    }
+  });
 });
 
 module.exports = router;

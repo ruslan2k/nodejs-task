@@ -1,13 +1,15 @@
 extends layout
 
 block content
-  h3= title
-  p Welcome to #{title}
+
+  h3 Welcome to Shorter URL
 
   - if (typeof(short_url) !== 'undefined') {
     h2= proto + "://" + host + "/" + short_url
+    =" "
+    h4= "-> " + long_url 
   - }
-
+  br
   form(method="post" action="/shorturls")
     span.label Url:
     =" "

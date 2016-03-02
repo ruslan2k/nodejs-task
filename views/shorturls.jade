@@ -5,13 +5,12 @@ block content
 
   table
     tr
-      td id
+      td uid
       td visits
       td long url
     for url in shorturls
       tr
-        td= url.id
-        td= url.counter
         td
-          a(href=url.long_url)= url.long_url
-
+          a(href=proto + "://" + host + "/" +  url.path)= url.path
+        td= url.counter
+        td= url.long_url
