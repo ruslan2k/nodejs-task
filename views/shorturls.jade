@@ -8,4 +8,10 @@ block content
       td id
       td visits
       td long url
+    for url in shorturls
+      tr
+        td= url.id
+        td= url.counter
+        td
+          a(href=url.long_url)= url.long_url
 

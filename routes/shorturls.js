@@ -26,9 +26,8 @@ var auth = function (req, res, next) {
 
 /* Get short urls list */
 router.get('/', auth, function (req, res) {
-  db.all("SELECT * FROM urls ORDER BY counter DESC", function (err, rows) {
-    //res.json({"rows": rows});
-    res.render('shorturls', {"rows": rows});
+  db.all('SELECT * FROM urls ORDER BY counter DESC', function (err, rows) {
+    res.render('shorturls', {'shorturls': rows});
   });
 });
 
