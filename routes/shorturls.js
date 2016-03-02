@@ -1,11 +1,31 @@
 var express = require('express');
+var basicAuth = require('basic-auth');
 var router = express.Router();
 var funcs = require('../libs/funcs');
 var db = require('../db');
 var url_regex = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
 
+var auth = function (req, res, next) {
+
+  function unauthorized (res) {
+    res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
+    return res.sendStatus(401);
+  };
+
+  var user = basicAuth(req);
+
+  if (!user || !user.name || !user.pass) {
+    return unauthorized(res);
+  }
+  if (user.name === 'admin' && user.pass === 'nimda') {
+    return next();
+  } else {
+    return unauthorized(res);
+  }
+};
+
 /* Get short urls list */
-router.get('/', function (req, res) {
+router.get('/', auth, function (req, res) {
   db.all("SELECT * FROM urls ORDER BY counter DESC", function (err, rows) {
     //res.json({"rows": rows});
     res.render('shorturls', {"rows": rows});
