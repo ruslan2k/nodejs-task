@@ -11,9 +11,10 @@ $ make docker
 $ make
 ```
 
-http://localhost:3000
+[http://localhost:3000](http://localhost:3000)
 
 
 ## Security
 
 ## ToDo
+- Add model, Hide db queries in models
