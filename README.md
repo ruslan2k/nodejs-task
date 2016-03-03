@@ -11,10 +11,21 @@ $ make docker
 $ make
 ```
 
+## Access
+
 [http://localhost:3000](http://localhost:3000)
+[http://localhost:3000/shorturls](http://localhost:3000/shorturls) admin / nimda
 
-
-## Security
 
 ## ToDo
 - Add model, Hide db queries in models
+- Add styles
+- Add callbacks to db queries
+- Add comment to sources
+- Check code with jshint / jslint
+- Add tests
+- Improve statistics
+- Move long urls in separate table
+
+
+## Security
