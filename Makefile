@@ -1,8 +1,12 @@
 APP := short_url
 
-default:
+default: db.sq3
 	npm install
 	node server.js
+
+db.sq3:
+	npm install
+	node init-db.js
 
 docker:
 	docker run -i -t --rm --name $(APP) -p 3000:3000 \
