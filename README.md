@@ -1,5 +1,4 @@
-# nodejs-task
-URL Shortener
+# URL Shortener
 
 ## Run
 
@@ -14,7 +13,8 @@ $ make
 ## Access
 
 [http://localhost:3000](http://localhost:3000)
-[http://localhost:3000/shorturls](http://localhost:3000/shorturls) admin / nimda
+
+Statistics: [http://localhost:3000/shorturls](http://localhost:3000/shorturls) admin / nimda
 
 
 ## ToDo
@@ -26,6 +26,4 @@ $ make
 - Add tests
 - Improve statistics
 - Move long urls in separate table
-
-
-## Security
+- Add ORM (Boockshelf)
